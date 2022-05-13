@@ -1,0 +1,7 @@
+{
+  "name": "IonicTutorial2022",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
