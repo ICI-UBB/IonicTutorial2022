@@ -12,8 +12,6 @@ export class HomePage {
   constructor(private router: Router) {}
 
   nextPageWithQueryParams() {
-    //this.router.navigateByUrl('/content?text=adasdadasd');
-
     let navigationExtras: NavigationExtras = {
       queryParams: {
         text: this.userText
@@ -21,6 +19,15 @@ export class HomePage {
     }
 
     this.router.navigate(['content'], navigationExtras);
+  }
+
+  nextPageWithState(){
+    let navigationExtras: NavigationExtras = {
+      state:{
+        text: this.userText
+      }
+    };
+    this.router.navigate(['content'],navigationExtras);
   }
 
 }
