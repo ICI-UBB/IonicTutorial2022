@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { ItemsService } from '../services/items.service';
 
 @Component({
   selector: 'app-content',
@@ -8,8 +10,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ContentPage implements OnInit {
   data: any;
+  items: Observable<any[]>;
 
-  constructor(private route: ActivatedRoute, private router: Router) { 
+  constructor(private route: ActivatedRoute, private router: Router, private itemsService: ItemsService) { 
     // Method 1: Query params
     this.route.queryParams.subscribe(params => {
       if (params && params.text) {
@@ -26,6 +29,10 @@ export class ContentPage implements OnInit {
   }
 
   ngOnInit() {
+    this.itemsService.getItems().subscribe(res => {
+      console.log('my items', res);
+    })
+    this.items = this.itemsService.getItems();
   }
 
   goBack(){
