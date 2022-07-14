@@ -17,6 +17,7 @@ export class ContentPage implements OnInit {
     this.route.queryParams.subscribe(params => {
       if (params && params.text) {
         this.data = params.text;
+        this.itemsService.addItem(this.data);
       }
     });
 
@@ -24,6 +25,7 @@ export class ContentPage implements OnInit {
     this.route.queryParams.subscribe(params =>{
       if(this.router.getCurrentNavigation().extras.state){
         this.data = this.router.getCurrentNavigation().extras.state.text;
+        this.itemsService.addItem(this.data);
       }
     })
   }
