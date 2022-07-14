@@ -20,6 +20,16 @@
           <ion-label>
             {{ i.text }}
           </ion-label>
+
+          <div class="item-note" item-end>
+            <button ion-button clear (click)="editItem(i.idField)">
+              <ion-icon name="create" style="zoom:2.0"></ion-icon>
+            </button>
+            <button ion-button clear (click)="deleteItem(i.idField)">
+              <ion-icon name="trash" style="zoom:2.0"></ion-icon>
+            </button>
+          </div>
+
         </ion-item>
       </ion-list>
     </ion-card-content>
