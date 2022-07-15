@@ -14,12 +14,24 @@ export class ItemsService {
   }
 
   getItems(){
-    return this.itemsCollection.valueChanges();
+    return this.itemsCollection.valueChanges( {idField: 'idField'} );
   }
 
   addItem(t: any) {
     this.itemsCollection.add({
       text: t
     });
+  }
+
+  deleteItem(id: string) {
+    return this.itemsCollection.doc(id).delete();
+  }
+
+  getItem(id: string) {
+    return this.itemsCollection.doc(id);
+  }
+
+  updateItem(id: string, newData: any){
+    return this.itemsCollection.doc(id).update(newData);
   }
 }

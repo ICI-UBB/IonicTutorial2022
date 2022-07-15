@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Edit Item</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list line="full">
+    <form [formGroup]="updateItemForm" (ngSubmit)="updateForm()">
+      <ion-item>
+        <ion-label position="floating">Text:</ion-label>
+        <ion-input formControlName="text" type="text" required></ion-input>
+      </ion-item>
+      <ion-button type="submit" color="primary" shape="full" expand="block">
+        Update Item</ion-button>
+    </form>
+  </ion-list>
+
+</ion-content>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ItemsService } from '../services/items.service';
 
@@ -39,6 +39,22 @@ export class ContentPage implements OnInit {
 
   goBack(){
     this.router.navigate(['home']);
+  }
+
+  editItem(idItem) {
+    // pasar parametro a edit-item
+    let navigationExtras: NavigationExtras = {
+      state: {
+        id: idItem
+      }
+    }
+    this.router.navigate(['edit-item'], navigationExtras);
+  }
+
+  deleteItem(idItem) {
+    if (window.confirm("Realmente desea eliminar el item?")) {
+      this.itemsService.deleteItem(idItem);
+    }
   }
 
 }

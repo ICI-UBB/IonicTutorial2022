@@ -15,6 +15,10 @@ const routes: Routes = [
     path: 'content',
     loadChildren: () => import('./content/content.module').then( m => m.ContentPageModule)
   },
+  {
+    path: 'edit-item',
+    loadChildren: () => import('./edit-item/edit-item.module').then( m => m.EditItemPageModule)
+  },
 ];
 
 @NgModule({
