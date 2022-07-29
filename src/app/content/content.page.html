@@ -12,6 +12,15 @@
         {{ data }}
       </ion-card-title>
     </ion-card-header>
+
+    <ion-item>
+      <ion-label>Filter by Category</ion-label>
+      <ion-select multiple="false" [(ngModel)]="selectedCategory"
+      (ionChange)="getSelectedCategory(selectedCategory)">
+        <ion-select-option value="English">English</ion-select-option>
+        <ion-select-option value="Spanish">Spanish</ion-select-option> 
+    </ion-select>
+    </ion-item>
   
     <ion-card-content>
       Database:

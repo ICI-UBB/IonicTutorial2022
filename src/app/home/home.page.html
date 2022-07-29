@@ -21,6 +21,13 @@
   
     <ion-card-content>
       <ion-input [(ngModel)]="userText" placeholder="Enter Input"></ion-input>
+      <ion-item>
+        <ion-label>Category</ion-label>
+        <ion-select multiple="false" [(ngModel)]="selectedCategory">
+          <ion-select-option value="English">English</ion-select-option>
+          <ion-select-option value="Spanish">Spanish</ion-select-option> 
+      </ion-select>
+      </ion-item>
       <ion-button (click)="nextPageWithQueryParams()">Query Params</ion-button>
       <ion-button (click)="nextPageWithState()">State</ion-button>
     </ion-card-content>

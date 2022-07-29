@@ -10,6 +10,7 @@ import { ItemsService } from '../services/items.service';
 })
 export class ContentPage implements OnInit {
   data: any;
+  category: any;
   items: Observable<any[]>;
 
   constructor(private route: ActivatedRoute, private router: Router, private itemsService: ItemsService) { 
@@ -17,7 +18,10 @@ export class ContentPage implements OnInit {
     this.route.queryParams.subscribe(params => {
       if (params && params.text) {
         this.data = params.text;
-        this.itemsService.addItem(this.data);
+        this.category = params.category;
+        console.log("category: "+this.category);
+        //this.itemsService.addItem(this.data);
+        this.itemsService.addItemWithCategory(this.data, this.category);
       }
     });
 
@@ -25,8 +29,11 @@ export class ContentPage implements OnInit {
     this.route.queryParams.subscribe(params =>{
       if(this.router.getCurrentNavigation().extras.state){
         this.data = this.router.getCurrentNavigation().extras.state.text;
-        this.itemsService.addItem(this.data);
-      }
+        this.category = this.router.getCurrentNavigation().extras.state.category;
+        console.log("category: "+this.category);
+        //this.itemsService.addItem(this.data);
+        this.itemsService.addItemWithCategory(this.data, this.category);
+       }
     })
   }
 
@@ -55,6 +62,11 @@ export class ContentPage implements OnInit {
     if (window.confirm("Realmente desea eliminar el item?")) {
       this.itemsService.deleteItem(idItem);
     }
+  }
+
+  getSelectedCategory(selectedCategory) {
+    console.log(selectedCategory);
+    this.items = this.itemsService.getItemsByCategory(selectedCategory);
   }
 
 }

@@ -17,9 +17,21 @@ export class ItemsService {
     return this.itemsCollection.valueChanges( {idField: 'idField'} );
   }
 
+  getItemsByCategory(selectedCategory: string) {
+    return this.afs.collection("items", ref =>
+    ref.where("category", "==", selectedCategory)).valueChanges();
+  }
+
   addItem(t: any) {
     this.itemsCollection.add({
       text: t
+    });
+  }
+
+  addItemWithCategory(text: any, category: any) {
+    this.itemsCollection.add({
+      text: text,
+      category: category
     });
   }
 
